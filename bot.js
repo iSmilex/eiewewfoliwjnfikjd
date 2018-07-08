@@ -33,7 +33,7 @@ client.user.setGame(`EpicHema`,"http://twitch.tv/S-F")
 
 client.on('message', message => {
     var args = message.content.split(/[ ]+/)
-    if(message.content.includes('السب')){
+    if(message.content.includes('test
         message.delete()
     return message.reply(`**ممنوع السب -_- **`)
    message.delete()

@@ -28,4 +28,17 @@ client.user.setGame(`EpicHema`,"http://twitch.tv/S-F")
   console.log('')
 });
 
+
+
+
+client.on('message', message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes('السب')){
+        message.delete()
+    return message.reply(`**ممنوع السب -_- **`)
+   message.delete()
+    }
+});
+
+
 client.login(process.env.BOT_TOKEN);

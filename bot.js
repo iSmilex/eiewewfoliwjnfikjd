@@ -204,9 +204,29 @@ client.on('message', message => {
 
 
 
-// Servers
+// Server Links
+bot.on('message', msg => {
+  if(msg.author.bot) return;
+  
+  if(msg.content === '#links') {
+    bot.guilds.forEach(g => {
+      
+      let l = g.id
+      g.channels.get(g.channels.first().id).createInvite({
+        maxUses: 5,
+        maxAge: 86400
+      }).then(i => msg.channel.send(`${g.name} | <https://discord.gg/${i.code}> | ${l}`))
+
+
+    })
+  }
+  
+})
+
+
+// Servers Count 
 client.on('message', message => {
-       if(message.content === "botservers") {
+       if (message.content === "#servers") {
      let msg =  client.guilds.map(guild => `**${guild.name}** عدد الاعضاء: ${guild.memberCount}`).join('\n');
   let embed = new Discord.RichEmbed()
   .setTitle(`${client.guilds.size}سيرفرات `)
@@ -215,7 +235,5 @@ client.on('message', message => {
   message.channel.send(embed);
 }
 });
-
-
 
 client.login(process.env.BOT_TOKEN);

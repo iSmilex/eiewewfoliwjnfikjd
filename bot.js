@@ -204,20 +204,6 @@ client.on('message', message => {
 
 
 
-// DM
-client.on('message', function(message) {
-    if (message.channel.type === "dm") {
-        if (message.author.id === client.user.id) return;
-        var norElden = new Discord.RichEmbed()
-            .setColor('RANDOM')
-            .setTimestamp()
-            .setTitle('``رساله جديده في خاص البوت``')
-            .setThumbnail(`${message.author.avatarURL}`)
-            .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
-            .setFooter(`من (@${message.author.tag})  |  (${message.author.id})`)
-        client.channels.get("470612663404199946").send({ embed: norElden });
-    }
-});
 
 // Servers
 client.on('message', message => {

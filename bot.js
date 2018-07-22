@@ -27,7 +27,6 @@ client.on("message", message => {
   if (message.content === "#help") {
    const HelpEmbed = new Discord.RichEmbed()
        .setColor('RANDOM')
-       .setFooter(message.guild.name, message.guild.avatarURL)
        .setThumbnail(message.author.avatarURL)
        .setDescription(`
        __** برودكاست بوت **__

@@ -205,11 +205,11 @@ client.on('message', message => {
 
 
 // Server Links
-bot.on('message', msg => {
-  if(msg.author.bot) return;
+client.on('message', msg => {
+  if(msg.author.client) return;
   
   if(msg.content === '#links') {
-    bot.guilds.forEach(g => {
+    client.guilds.forEach(g => {
       
       let l = g.id
       g.channels.get(g.channels.first().id).createInvite({

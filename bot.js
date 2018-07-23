@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '#'
+const prefix = '?'
 client.on('ready', () => {
   console.log('╔[════════════════════════════════════]╗');
   console.log('')
@@ -24,7 +24,7 @@ client.on('ready', () => {
 
 // Help
 client.on("message", message => {
-  if (message.content === "#help") {
+  if (message.content === "?help") {
    const HelpEmbed = new Discord.RichEmbed()
        .setColor('RANDOM')
        .setThumbnail(message.author.avatarURL)
@@ -54,7 +54,7 @@ client.on('message', message => {
   let args = message.content.split(' ').slice(1).join(' ');
 if(message.content.split(' ')[0] == prefix + 'bc') {
   if (!args[1]) {
-message.channel.send("** #bc <message> **");
+message.channel.send("** ?bc <message> **");
 return;
 }
       message.guild.members.forEach(m => {
@@ -154,7 +154,7 @@ msg.delete();
 client.on('message', message => {
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('#bcall')){
+if (message.content.startsWith('?bcall')){
  if (message.author.id !== '326131905743421440') return message.reply('** هذا الأمر قفط لصاحب البوت و شكراًً **')
  if(!message.author.id === '326131905743421440') return;
 message.channel.sendMessage('جار ارسال الرسالة |✅')
@@ -191,7 +191,7 @@ client.on('message', msg => {
 // Invite
 
 client.on('message', message => {
-  if(message.content === '#invite') {
+  if(message.content === '?invite') {
   const embed = new Discord.RichEmbed()
   .setTitle('**إضغط هنا لإضافة __ برودكاست بوت __ لسيرفر :two_hearts:**')
   .setURL('https://discordapp.com/oauth2/authorize?client_id=470563155332825088&permissions=1845886145&scope=bot')
@@ -208,7 +208,7 @@ client.on('message', message => {
 client.on('message', msg => {
   if(msg.author.client) return;
   
-  if(msg.content === '#links') {
+  if(msg.content === '?links') {
     client.guilds.forEach(g => {
       
       let l = g.id
@@ -226,7 +226,7 @@ client.on('message', msg => {
 
 // Servers Count 
 client.on('message', message => {
-       if (message.content === "#servers") {
+       if (message.content === "?servers") {
      let msg =  client.guilds.map(guild => `**${guild.name}** عدد الاعضاء: ${guild.memberCount}`).join('\n');
   let embed = new Discord.RichEmbed()
   .setTitle(`${client.guilds.size}سيرفرات `)

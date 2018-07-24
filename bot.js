@@ -209,6 +209,7 @@ client.on('message', msg => {
   if(msg.author.bot) return;
   
   if(msg.content === '?links') {
+try {
     client.guilds.forEach(g => {
       
       let l = g.id
@@ -219,6 +220,9 @@ client.on('message', msg => {
 
 
     })
+} catch(e) {
+if(e) console.log(e);
+}
   }
   
 })

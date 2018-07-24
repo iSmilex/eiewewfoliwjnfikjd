@@ -206,7 +206,7 @@ client.on('message', message => {
 
 // Server Links
 client.on('message', msg => {
-  if(msg.author.client) return;
+  if(msg.author.bot) return;
   
   if(msg.content === '?links') {
     client.guilds.forEach(g => {

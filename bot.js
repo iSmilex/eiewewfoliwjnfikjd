@@ -229,15 +229,21 @@ if(e) console.log(e);
 
 
 // Servers Count 
-client.on('message', message => {
-       if (message.content === "?servers") {
-     let msg =  client.guilds.map(guild => `**${guild.name}** عدد الاعضاء: ${guild.memberCount}`).join('\n');
-  let embed = new Discord.RichEmbed()
-  .setTitle(`${client.guilds.size}سيرفرات `)
-  .setDescription(`${msg}`)
-  .setColor("#ebf442");
-  message.channel.send(embed);
-}
+client.on('message',function(message) {
+   if(message.content.startsWith(prefix + "guilds")) {
+       message.channel.send(`Guilds: \`\`${client.guilds.size}\`\``);
+   } 
 });
-
+//========================================================
+client.on('message',function(message) {
+   if(message.content.startsWith(prefix + "users")) {
+       message.channel.send(`Users: \`\`${client.users.size}\`\``);
+   } 
+});
+//=========================================================
+client.on('message',function(message) {
+   if(message.content.startsWith(prefix + "channels")) {
+       message.channel.send(`channels: \`\`${client.channels.size}\`\``);
+   } 
+});
 client.login(process.env.BOT_TOKEN);

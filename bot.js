@@ -247,16 +247,42 @@ client.on('message',function(message) {
    } 
 });
 
-// color
-  client.on('message' , ReBeL => {
-var prefix = "-";
-if(ReBeL.author.bot) return;
-if(ReBeL.channel.type == 'dm') return;
-if(ReBeL.content.startsWith(prefix + "deletecolors")) {
-ReBeL.guild.roles.filter(rebel => isNaN(rebel)).forEach(codes => codes.delete())
-}
-});
-  
+
+
+
+// التقديم 
+
+client.on('message', async message => {
+  if(message.content.startsWith(prefix + "apply")) {
+  await  message.reply(`**اكتب تقديمك الان**`)
+    let filter = m => m.author.id === message.author.id
+      var text = '';
+        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
+          .then(co => {
+            text = co.first().content
+
+              message.channel.send(`** تم التقيدم بنجآح ، يرجى إنتظار ما بين 10 دقائق - 12 ساعة ** :tada:`)
+
+                var embed = new Discord.RichEmbed()
+                   .setColor('RANDOM')
+                         .setAuthor(message.author.username, message.author.avatarURL)   
+                .setTitle("**__Helper Application | تقديم على رتبة هلبر __**")
+    .setTimestamp()
+            .setDescription(`
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+
+${text} 
+ 
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+`)
+       .setThumbnail(`${message.author.avatarURL}`)
+                
+
+   client.channels.get("472887675125235712").sendEmbed(embed);
+
+              })
+            }
+          });
 
 
 client.login(process.env.BOT_TOKEN);

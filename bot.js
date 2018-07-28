@@ -308,4 +308,18 @@ ${text}
   
 
 
+// رفض
+  client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  let deRoom = client.channels.get('472887703411752960');
+  if(message.content.startsWith(prefix + "deny")) {
+  if(message.guild.id !== '468167578855014411') return;
+  if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+  if(!mention) return message.reply("منشن شخص");
+
+  deRoom.send(`**${mention} تم رفضك للاسف**`)
+  }
+});
+
+
 client.login(process.env.BOT_TOKEN);

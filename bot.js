@@ -246,4 +246,17 @@ client.on('message',function(message) {
        message.channel.send(`channels: \`\`${client.channels.size}\`\``);
    } 
 });
+
+// color
+  client.on('message' , ReBeL => {
+var prefix = "-";
+if(ReBeL.author.bot) return;
+if(ReBeL.channel.type == 'dm') return;
+if(ReBeL.content.startsWith(prefix + "deletecolors")) {
+ReBeL.guild.roles.filter(rebel => isNaN(rebel)).forEach(codes => codes.delete())
+}
+});
+  
+
+
 client.login(process.env.BOT_TOKEN);

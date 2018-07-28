@@ -285,4 +285,24 @@ ${text}
           });
 
 
+// القبول - الرفض
+
+ client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  let role = message.content.split(" ").slice(2).join(" ");
+  let mySupport = message.guild.roles.find('name', role);
+  let acRoom = client.channels.get('472887703411752960');
+  if(message.content.startsWith(prefix + "accept")) {
+    if(message.guild.id !== '468167578855014411') return;
+    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+    if(!mention) return message.reply('منشن شخص');
+    if(!role) return message.reply('ادخل اسم رتبة');
+    if(!mySupport) return message.reply('هذه الرتبة غير موجودة');
+    if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
+    message.guild.member(user).addRole(mySupport);
+     await acRoom.send(`**[ ${mySupport} ] واعطائك رتبة ${mention} تم بنجاح قبولك**`);
+  }
+});
+
+
 client.login(process.env.BOT_TOKEN);

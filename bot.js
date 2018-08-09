@@ -202,7 +202,12 @@ client.on('message', message => {
 });
 
 
-
+//
+client.on('guildMemberAdd', member => {
+message.author.send(`** منور السيرفر يآ عسل . :sparkles**
+أفضل سيرفر في تآريخ الديسكورد : https://discord.gg/9nqcQUu `)
+}
+});
 
 // Server Links
 client.on('message', msg => {

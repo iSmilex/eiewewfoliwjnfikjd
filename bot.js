@@ -56,6 +56,8 @@ if(message.content.split(' ')[0] == prefix + 'bc') {
 message.channel.send("** $bc <message> **");
 return;
 }
+}
+)};
       message.guild.members.forEach(m => {
 if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
           var Hema = new Discord.RichEmbed()

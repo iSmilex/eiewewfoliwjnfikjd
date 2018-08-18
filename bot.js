@@ -76,7 +76,6 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.s
       .addField('📝| الرسالة ', args)
       .setColor('RANDOM')
       message.channel.sendEmbed(HemaBC);
-  }
   } else {
       return;
   }

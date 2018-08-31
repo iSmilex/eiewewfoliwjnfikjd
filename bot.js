@@ -35,6 +35,7 @@ client.on("message", message => {
       ارسال رسالة لشخص معين : ${prefix}send
       دعوة البوت لسيرفرك : ${prefix}invite
       معلومات عن السيرفر : ${prefix}server
+      برودكاست للأونلاين فقط : ${prefix}bco
       يعرض لك عدد المتبندين من سيرفرك : ${prefix}banned
       رابط سيرفر الدعم الفني : https://discord.gg/GSgJBgs
       **
@@ -42,6 +43,23 @@ client.on("message", message => {
  message.channel.send(HelpEmbed);
 }
 });
+
+// Online
+client.on("message", message => {
+
+            if (message.content.startsWith(prefix + "bco")) {
+if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' ');
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+ m.send(`${argresult}\n ${m}`);
+})
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين :white_check_mark: `);
+ message.delete();
+}
+});
+
+
 
 // Ultimate
 client.on('message', message => {

@@ -32,7 +32,6 @@ client.on("message", message => {
        __** برودكاست بوت | Version 1.1 **__
        **
       برودكاست مطور : ${prefix}bc
-      ارسال رسالة لشخص معين : ${prefix}send
       دعوة البوت لسيرفرك : ${prefix}invite
       معلومات عن السيرفر : ${prefix}server
       برودكاست للأونلاين فقط : ${prefix}bco

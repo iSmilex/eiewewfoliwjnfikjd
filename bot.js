@@ -57,7 +57,7 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.s
 })
  message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين :white_check_mark: `);
  message.delete();
-};
+}
 });
 
 

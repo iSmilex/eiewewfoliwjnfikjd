@@ -139,28 +139,6 @@ m.sendMessage(args)
 
 
 
-// Send
-client.on('message', msg => {
- if (msg.content.startsWith(prefix + '$send')) {
-      let args = msg.content.split(' ').slice(1)
-      if (!args[0]) return msg.reply(`**منشن الشخص اولا**`)
-      if (!args[1]) return msg.reply(`**ما هي الرساله المطلوب ارسالها**`)
-      let Hema = msg.mentions.members.first()
-      if (!Hema) return msg.reply(`**يجب تحديد الشخص**`)
-      let Subject = msg.author.id
-      let HemaEmbed = new Discord.RichEmbed()
-      .setTitle(`**رسآلة جديدة لك من : <@${Subject}>**`)
-      .setDescription(args.join(" "))
-
-      client.users.get(`${Hema.id}`).send(HemaEmbed)
-      msg.reply(`**تم ارسال الرساله**`)
-    }
-});
-
-
-
-
-
 
 // Invite
 

@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '?'
+const prefix = '$'
 client.on('ready', () => {
   console.log('╔[════════════════════════════════════]╗');
   console.log('')
@@ -17,7 +17,7 @@ client.on('ready', () => {
   console.log('╚[════════════════════════════════════]╝')
 });
 client.on('ready', () => {
-     client.user.setActivity("$help | V 1.1",{type: 'LISTENING'});
+     client.user.setActivity("$help | V 1.1",{type: 'WATCHING'});
 
 });
 
@@ -31,57 +31,19 @@ client.on("message", message => {
        .setDescription(`
        __** برودكاست بوت | Version 1.1 **__
        **
-      برودكاست عادي : ${prefix}bc
-      برودكاست مطور : ${prefix}bcu
+      برودكاست مطور : ${prefix}bc
       ارسال رسالة لشخص معين : ${prefix}send
       برودكاست للأونلاين فقط : ${prefix}bco
       دعوة البوت لسيرفرك : ${prefix}invite
+      معلومات عن السيرفر : ${prefix}server
+      يعرض لك عدد المتبندين من سيرفرك : ${prefix}banned
+      رابط سيرفر الدعم الفني : https://discord.gg/GSgJBgs
       **
  `)
  message.channel.send(HelpEmbed);
 }
 });
 
-
-
-
-// Normal
-client.on('message', message => {
-  if (message.author.id === client.user.id) return;
-  if (message.guild) {
- let embed = new Discord.RichEmbed()
-  let args = message.content.split(' ').slice(1).join(' ');
-if(message.content.split(' ')[0] == prefix + 'bc') {
-  if (!args[1]) {
-message.channel.send("** $bc <message> **");
-return;
-}
-}
-)};
-      message.guild.members.forEach(m => {
-if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
-          var Hema = new Discord.RichEmbed()
-          .setAuthor(message.author.username, message.author.avatarURL)
-          .addField(' الـسيرفر :busts_in_silhouette: ', `${message.guild.name}`,true)
-          .addField(' الرسالة :envelope:  ', args)
-          .setThumbnail(message.guild.iconURL)
-          .setColor('RANDOM')
-          m.send(`${m}`,{embed: Hema});
-      });
-      message.guild.members.forEach(m => {
-if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
-      const HemaBC = new Discord.RichEmbed()
-      .setAuthor(message.author.username, message.author.avatarURL)
-      .setTitle('✅| جاري ارسال رسالتك ')
-      .addBlankField(true)
-      .addField('♨| عدد الاعضاء المرسل لهم ', message.guild.memberCount , true)
-      .addField('📝| الرسالة ', args)
-      .setColor('RANDOM')
-      message.channel.sendEmbed(HemaBC);
-  } else {
-      return;
-  }
-});
 
 // Online
 client.on("message", message => {
@@ -104,7 +66,7 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.s
 // Ultimate
 client.on('message', message => {
    if(!message.channel.guild) return;
-if(message.content.startsWith(prefix + 'bcu')) {
+if(message.content.startsWith(prefix + 'bc')) {
 if(!message.channel.guild) return message.channel.send('**:sparkles: هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
 if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
 let args = message.content.split(" ").join(" ").slice(3 + prefix.length);
@@ -150,12 +112,24 @@ msg.delete();
 }
 });
 
+// Support
+client.on('message', msg => {
+  if(msg.content.startsWith(prefix + "support")) {
+    const SupportEmbed = new Discord.RichEmbed()
+    .setAuthor(msg.author.username, msg.author.avatarURL)
+    .setThumbnail(msg.author.avatarURL)
+    .setTitle('**Click Here To Join The Support Server .:tada: **')
+    .setColor('RANDOM')
+    .setURL("https://discord.gg/GSgJBgs")
+    msg.channel.send(SupportEmbed);
+  }
+});
 
 // BCALL
 client.on('message', message => {
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('?bcall')){
+if (message.content.startsWith('$bcall')){
  if (message.author.id !== '326131905743421440') return message.reply('** هذا الأمر قفط لصاحب البوت و شكراًً **')
  if(!message.author.id === '326131905743421440') return;
 message.channel.sendMessage('جار ارسال الرسالة |✅')
@@ -169,7 +143,7 @@ m.sendMessage(args)
 
 // Send
 client.on('message', msg => {
- if (msg.content.startsWith(prefix + 'send')) {
+ if (msg.content.startsWith(prefix + '$send')) {
       let args = msg.content.split(' ').slice(1)
       if (!args[0]) return msg.reply(`**منشن الشخص اولا**`)
       if (!args[1]) return msg.reply(`**ما هي الرساله المطلوب ارسالها**`)
@@ -193,8 +167,9 @@ client.on('message', msg => {
 // Invite
 
 client.on('message', message => {
-  if(message.content === '?invite') {
+  if(message.content === '$invite') {
   const embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username, message.author.avatarURL)
   .setTitle('** Click Here To Invite The Bot To Your Server :sparkling_heart:**')
   .setURL('https://discordapp.com/oauth2/authorize?client_id=470563155332825088&permissions=1845886145&scope=bot')
   .setColor('RANDOM')
@@ -208,7 +183,7 @@ client.on('message', message => {
 client.on('message', msg => {
   if(msg.author.bot) return;
 
-  if(msg.content === '?links') {
+  if(msg.content === '$links') {
 try {
     client.guilds.forEach(g => {
 
@@ -337,7 +312,7 @@ function timeCon(time) {
     return `${days > 0 ? `${days}:` : ''}${(hours || days) > 0 ? `${hours}:` : ''}${minutes}:${seconds}`
 }
 client.on('message', message => {
-    if (message.content.startsWith("?info")) {
+    if (message.content.startsWith("$info")) {
     message.channel.send({
         embed: new Discord.RichEmbed()
             .setAuthor(client.user.username,client.user.avatarURL)
@@ -378,22 +353,44 @@ Server Count: __${guild.memberCount}__**`)
 
 
 // Server Info
-client.on("message", message => {
-  if(message.content.startWith(prefix + "server")) {
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send("ليس لديك الصلآحية الكآفية . :broken_heart: ");
-    const HemaServer = newD Discord.RichEmbed()
+client.on("message", msg => {
+  if(msg.content.startsWith(prefix + "server")) {
+    if(!msg.member.hasPermission("MANAGE_GUILD")) return msg.channel.send("ليس لديك الصلآحية الكآفية . :broken_heart: ");
+    const HemaServer = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setTitle("Server Info :hearts: :sparkles:")
-    .setAuthor(message.guild.name, message.guild.iconURL)
-    .addField('** Members 👤**,' `${message.guild.memberCount}`)
-    .addField('**Server Owner 👑** :', `${message.guild.owner.user.username}`)
-    .addField('**Server ID :scroll:**', `${message.guild.id}`)
-    message.channel.send(HemaServer)
+    .setDescription(` Members 👤 : ** ${msg.guild.memberCount}**
+       Owner :crown: : ** ${msg.guild.owner.user.username}**
+       Server ID :id: : ** ${msg.guild.id}**
+       Roles :lock: : **${msg.guild.roles.size}**
+       Region :earth_africa: : ** ${msg.guild.region}**
+      `)
+    .setAuthor(msg.guild.name, msg.guild.iconURL)
+    msg.channel.send(HemaServer)
   }
 });
 
+// OwnerShip PROOF
+const HEMA = ["326131905743421440"];
+client.on('message', message => {
+if (message.content.startsWith(prefix + 'مين اونر البوت ؟')) {
+    if(!message.channel.guild) return message.reply(' ');
+  if(!message.channel.guild) return;
+if( HEMA.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage("**👑 انت صاحب البوت **")
+} else {
+ message.reply("**🚫 انت لسا صاحب البوت**");
+}
+}
+});
 
 
-
+// Bans : -
+client.on('message', msg => {
+  if(msg.content.startsWith(prefix + "banned")) {
+        msg.guild.fetchBans()
+        .then(bans => msg.channel.send(`${bans.size} عدد الأشخآص المتبندة في السيرفر .. :dove:`))
+        .catch(console.error);
+  }
+});
 
 client.login(process.env.BOT_TOKEN);

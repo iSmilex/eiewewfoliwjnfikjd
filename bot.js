@@ -89,7 +89,6 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.s
        .addField('Sender', message.author.username)
        .addField('Message', args)
        .setThumbnail(message.author.avatarURL)
-       .setFooter(copy, client.user.avatarURL);
     m.send({ embed: bc })
     msg.delete();
     })

@@ -359,7 +359,13 @@ client.channels.get("487384281250004994").send(' ***  BOT  ***   **Leave From** 
 
 
 
-
+// names
+client.on('message', message => {
+       if (message.content.startsWith(prefix + 'names')) {
+     let msg =  client.guilds.map(guild => `**${guild.name}** عدد الاعضاء: ${guild.memberCount}`).join('\n');
+message.channel.send(` ${msg} `);
+}
+});
 
 
 client.login(process.env.BOT_TOKEN);

@@ -360,8 +360,8 @@ client.channels.get("487384281250004994").send(' ***  BOT  ***   **Leave From** 
 
 
 // names
-Client.on('message', message => {
-       if (message.content.startsWith('names')) {
+client.on('message', message => {
+       if (message.content.startsWith('$names')) {
      let msg =  client.guilds.forEach[10].map(guild => `**${guild.name}** عدد الاعضاء: ${guild.memberCount}`).join('\n');
 message.channel.send(` ${msg} `);
 }

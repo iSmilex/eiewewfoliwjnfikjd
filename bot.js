@@ -371,7 +371,7 @@ bot.on('message', msg => {
       }).then(i => msg.channel.send(`${g.name} | ${guild.memberCount} | Guild ID ${l}`))
 
 
-    })
+    });
   }
 
 });

@@ -355,16 +355,6 @@ client.channels.get("487384281250004994").send(' ***  BOT  ***   **Join To**   *
 client.on("guildDelete", guild => {
 client.channels.get("487384281250004994").send(' ***  BOT  ***   **Leave From**   ***[ ' + `${guild.name}` + ' ]***   ,   **  Owner  **  ' + ' ***[ ' + '<@' + `${guild.owner.user.id}` + '>' + ' ]***  **|**  ***[ ' + '<' + `${guild.owner.user.username}` + '>' + ' ]***')
 });
-  
-
-
-
-// names
-client.on('message', message => {
-       if (message.content.startsWith('$names')) {
-     let msg =  client.guilds.forEach[10].map(guild => `**${guild.name}** عدد الاعضاء: ${guild.memberCount}`).join('\n');
-message.channel.send(` ${msg} `);
-}
-});
+ 
 
 client.login(process.env.BOT_TOKEN);

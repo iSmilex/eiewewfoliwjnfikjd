@@ -360,20 +360,11 @@ client.channels.get("487384281250004994").send(' ***  BOT  ***   **Leave From** 
 
 
 // names
-client.on('message', msg => {
-  if(msg.author.bot) return;
-
-  if(msg.content === '$names') {
-    client.guild.forEach(g => {
-
-      let l = g.id
-
-      }).then(i => msg.channel.send(`${g.name} | ${guild.memberCount} | Guild ID ${l}`))
-
-
-  }
-
+Client.on('message', message => {
+       if (message.content.startsWith('names')) {
+     let msg =  client.guilds.forEach[10].map(guild => `**${guild.name}** عدد الاعضاء: ${guild.memberCount}`).join('\n');
+message.channel.send(` ${msg} `);
+}
 });
-
 
 client.login(process.env.BOT_TOKEN);

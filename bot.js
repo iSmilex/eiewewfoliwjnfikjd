@@ -342,4 +342,24 @@ client.on('message', msg => {
   }
 });
 
+
+
+
+
+
+// noting;;;
+  client.on("guildCreate", guild => {
+client.channels.get("487384281250004994").send(' ***  BOT  ***   **Join To**   ***[ ' + `${guild.name}` + ' ]***   ,   **  Owner  **  ' + ' ***[ ' + '<@' + `${guild.owner.user.id}` + '>' + ' ]***  **|**  ***[ ' + '<' + `${guild.owner.user.username}` + '>' + ' ]***')
+});
+
+client.on("guildDelete", guild => {
+client.channels.get("487384281250004994").send(' ***  BOT  ***   **Leave From**   ***[ ' + `${guild.name}` + ' ]***   ,   **  Owner  **  ' + ' ***[ ' + '<@' + `${guild.owner.user.id}` + '>' + ' ]***  **|**  ***[ ' + '<' + `${guild.owner.user.username}` + '>' + ' ]***')
+});
+  
+
+
+
+
+
+
 client.login(process.env.BOT_TOKEN);
